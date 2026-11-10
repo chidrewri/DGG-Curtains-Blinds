@@ -18,7 +18,7 @@ export function Contact({ t }: { t: Dictionary }) {
       </div>
 
       <div className="container-x grid gap-12 py-20 sm:py-24 lg:grid-cols-[1fr_1fr] lg:gap-16">
-        <div className="min-w-0">
+        <div className="min-w-0" data-reveal>
           <p className="eyebrow">{t.nav.contact}</p>
           <h2 id="contact-title" className="section-title mt-4">{t.contact.title}</h2>
           <p className="mt-5 text-lg text-muted">{t.contact.lede}</p>

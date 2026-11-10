@@ -89,7 +89,10 @@
     @apply text-3xl sm:text-4xl lg:text-[2.75rem];
   }
   .btn {
-    @apply inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full px-6 py-3 text-[0.95rem] font-bold tracking-wide transition-colors duration-200 select-none;
+    @apply inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full px-6 py-3 text-[0.95rem] font-bold tracking-wide select-none;
+    transition:
+      background-color 0.2s, color 0.2s, border-color 0.2s,
+      transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.25s;
   }
   .btn svg {
     @apply size-5 shrink-0;
@@ -108,6 +111,115 @@
   }
 }
 
+/* ---------- Hover and motion polish ----------
+ * Kept outside @layer on purpose so hover states win over Tailwind utility colors. */
+  /* Only lift on devices with a real pointer, so phones don't get "stuck" hover states. */
+  @media (hover: hover) {
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px -12px rgba(11, 39, 68, 0.55);
+    }
+    .btn-gold:hover {
+      box-shadow: 0 10px 26px -10px rgba(213, 170, 101, 0.75);
+    }
+    .on-navy .btn:hover,
+    header .btn:hover {
+      box-shadow: 0 10px 26px -10px rgba(213, 170, 101, 0.55);
+    }
+  }
+  .btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  .btn svg {
+    transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  @media (hover: hover) {
+    .btn:hover svg:last-child:not(:first-child) {
+      transform: translateX(3px);
+    }
+  }
+
+  /* Nav links: gold underline that slides in from the left; stays on the current section. */
+  .nav-link {
+    position: relative;
+    padding-block: 0.375rem;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current]::after {
+    transform: scaleX(1);
+  }
+
+  /* Cards that lift, with a gold edge that draws across the top. */
+  .card-lift {
+    position: relative;
+    transition:
+      transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 0.35s,
+      border-color 0.35s;
+  }
+  .card-lift::before {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: -1px;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: var(--color-gold);
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  @media (hover: hover) {
+    .card-lift:hover {
+      transform: translateY(-6px);
+      border-color: color-mix(in srgb, var(--color-gold) 55%, var(--color-line));
+      box-shadow: 0 24px 44px -26px rgba(11, 39, 68, 0.5);
+    }
+    .card-lift:hover::before {
+      transform: scaleX(1);
+    }
+  }
+
+  /* Icons that warm to gold on hover (Why Choose Us, About points). */
+  .icon-warm {
+    transition: background-color 0.3s, color 0.3s, transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  @media (hover: hover) {
+    .group:hover .icon-warm {
+      background-color: var(--color-gold);
+      color: var(--color-navy-deep);
+      transform: scale(1.08) rotate(-4deg);
+    }
+  }
+
+  /* Scroll reveal. Content is only hidden once JavaScript has started, so nothing disappears if JS fails. */
+  .reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--reveal-i, 0) * 80ms);
+  }
+  .reveal-ready [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -118,5 +230,10 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .reveal-ready [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

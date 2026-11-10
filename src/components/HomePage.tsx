@@ -7,6 +7,7 @@ import { Header } from "./Header";
 import { Hero } from "./Hero";
 import { JsonLd } from "./JsonLd";
 import { MobileActionBar } from "./MobileActionBar";
+import { RevealOnScroll } from "./RevealOnScroll";
 import { Services } from "./Services";
 import { Solutions } from "./Solutions";
 import { WhyChoose } from "./WhyChoose";
@@ -31,6 +32,7 @@ export function HomePage({ lang }: { lang: Lang }) {
       <Footer t={t} />
       <MobileActionBar t={t} />
       <JsonLd description={t.meta.description} />
+      <RevealOnScroll />
     </div>
   );
 }

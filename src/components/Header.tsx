@@ -11,6 +11,7 @@ const SECTIONS = ["home", "about", "services", "projects", "why", "contact"] as 
 export function Header({ t, lang }: { t: Dictionary; lang: Lang }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("home");
+  const [scrolled, setScrolled] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
 
@@ -38,6 +39,14 @@ export function Header({ t, lang }: { t: Dictionary; lang: Lang }) {
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
+  // Make the header slimmer and solid once the visitor scrolls.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   // Highlight the section currently in view.
   useEffect(() => {
     const els = SECTIONS.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
@@ -55,9 +64,15 @@ export function Header({ t, lang }: { t: Dictionary; lang: Lang }) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gold/20 bg-navy/95 text-ivory backdrop-blur supports-[backdrop-filter]:bg-navy/90">
-      <div className="container-x flex h-[4.5rem] items-center gap-4">
-        <a href="#home" className="mr-auto shrink-0 rounded-md" aria-label="DGG Curtains & Blinds">
+    <header
+      className={`sticky top-0 z-50 border-b text-ivory backdrop-blur transition-[background-color,box-shadow,border-color] duration-300 ${
+        scrolled
+          ? "border-gold/30 bg-navy shadow-[0_10px_30px_-18px_rgba(0,0,0,0.6)]"
+          : "border-gold/20 bg-navy/95 supports-[backdrop-filter]:bg-navy/90"
+      }`}
+    >
+      <div className={`container-x flex items-center gap-4 transition-[height] duration-300 ${scrolled ? "h-16" : "h-[4.5rem]"}`}>
+        <a href="#home" className={`mr-auto shrink-0 origin-left rounded-md transition-transform duration-300 ${scrolled ? "scale-90" : ""}`} aria-label="DGG Curtains & Blinds">
           <Logo tone="dark" />
         </a>
 
@@ -68,7 +83,7 @@ export function Header({ t, lang }: { t: Dictionary; lang: Lang }) {
                 <a
                   href={`#${id}`}
                   aria-current={active === id ? "true" : undefined}
-                  className={`text-sm font-bold tracking-wide transition-colors hover:text-gold ${
+                  className={`nav-link text-sm font-bold tracking-wide transition-colors hover:text-gold ${
                     active === id ? "text-gold" : "text-mist"
                   }`}
                 >
@@ -118,7 +133,7 @@ export function Header({ t, lang }: { t: Dictionary; lang: Lang }) {
                 <a
                   href={`#${id}`}
                   onClick={() => setOpen(false)}
-                  className="flex min-h-12 items-center border-b border-navy-line font-serif text-lg text-ivory hover:text-gold"
+                  className="flex min-h-12 items-center border-b border-navy-line font-serif text-lg text-ivory transition-[color,padding] duration-200 hover:pl-2 hover:text-gold"
                 >
                   {labels[id]}
                 </a>

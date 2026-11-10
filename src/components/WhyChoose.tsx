@@ -15,14 +15,14 @@ export function WhyChoose({ t }: { t: Dictionary }) {
   return (
     <section id="why" aria-labelledby="why-title" className="on-navy bg-navy py-20 text-ivory sm:py-28">
       <div className="container-x">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl" data-reveal>
           <p className="eyebrow">{t.why.eyebrow}</p>
           <h2 id="why-title" className="section-title mt-4">{t.why.title}</h2>
         </div>
-        <ul className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        <ul data-reveal style={{ ["--reveal-i" as string]: 1 }} className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {t.why.items.map((item, i) => (
-            <li key={item.title} className="flex gap-4 border-t border-navy-line pt-6">
-              <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-navy-soft text-gold [&>svg]:size-5">
+            <li key={item.title} className="group flex gap-4 border-t border-navy-line pt-6 transition-colors duration-300 hover:border-gold">
+              <span className="icon-warm inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-navy-soft text-gold [&>svg]:size-5">
                 {icons[i % icons.length]}
               </span>
               <div className="min-w-0">
