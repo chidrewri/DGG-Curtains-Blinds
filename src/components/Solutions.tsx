@@ -6,14 +6,14 @@ export function Solutions({ t }: { t: Dictionary }) {
   return (
     <section id="solutions" aria-labelledby="solutions-title" className="py-20 sm:py-28">
       <div className="container-x">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl" data-reveal>
           <p className="eyebrow">{t.solutions.eyebrow}</p>
           <h2 id="solutions-title" className="section-title mt-4">{t.solutions.title}</h2>
         </div>
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <article className="flex flex-col rounded-3xl border border-line bg-paper p-8 sm:p-10">
+        <div data-reveal style={{ ["--reveal-i" as string]: 1 }} className="mt-12 grid gap-6 lg:grid-cols-2">
+          <article className="card-lift group flex flex-col rounded-3xl border border-line bg-paper p-8 sm:p-10">
             <div className="flex items-center gap-3">
-              <span className="inline-flex size-11 items-center justify-center rounded-full bg-ivory text-navy ring-1 ring-line"><FamilyIcon className="size-6" /></span>
+              <span className="icon-warm inline-flex size-11 items-center justify-center rounded-full bg-ivory text-navy ring-1 ring-line"><FamilyIcon className="size-6" /></span>
               <p className="eyebrow">{r.label}</p>
             </div>
             <h3 className="mt-6 text-3xl">{r.title}</h3>
@@ -25,9 +25,9 @@ export function Solutions({ t }: { t: Dictionary }) {
             </ul>
             <a href="#contact" className="btn btn-navy mt-8 self-start">{r.cta}<ArrowIcon /></a>
           </article>
-          <article className="on-navy flex flex-col rounded-3xl bg-navy p-8 text-ivory sm:p-10">
+          <article className="card-lift group on-navy flex flex-col rounded-3xl border border-navy bg-navy p-8 text-ivory sm:p-10">
             <div className="flex items-center gap-3">
-              <span className="inline-flex size-11 items-center justify-center rounded-full bg-navy-soft text-gold"><BuildingIcon className="size-6" /></span>
+              <span className="icon-warm inline-flex size-11 items-center justify-center rounded-full bg-navy-soft text-gold"><BuildingIcon className="size-6" /></span>
               <p className="eyebrow">{c.label}</p>
             </div>
             <h3 className="mt-6 text-3xl">{c.title}</h3>

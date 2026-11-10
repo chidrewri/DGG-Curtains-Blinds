@@ -10,7 +10,7 @@ export function Gallery({ t, lang }: { t: Dictionary; lang: Lang }) {
   return (
     <section id="projects" aria-labelledby="projects-title" className="border-y border-line bg-paper py-20 sm:py-28">
       <div className="container-x">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl" data-reveal>
           <p className="eyebrow">{t.gallery.eyebrow}</p>
           <h2 id="projects-title" className="section-title mt-4">
             {projects.length > 0 ? t.gallery.title : t.gallery.updatingTitle}
@@ -21,7 +21,7 @@ export function Gallery({ t, lang }: { t: Dictionary; lang: Lang }) {
         {projects.length > 0 ? (
           <GalleryGrid projects={projects} t={t} lang={lang} />
         ) : (
-          <div className="mt-10 grid items-center gap-10 rounded-3xl border border-line bg-ivory p-7 sm:p-10 lg:grid-cols-[1fr_1.1fr]">
+          <div data-reveal style={{ ["--reveal-i" as string]: 1 }} className="mt-10 grid items-center gap-10 rounded-3xl border border-line bg-ivory p-7 sm:p-10 lg:grid-cols-[1fr_1.1fr]">
             <div className="min-w-0">
               <p className="text-lg text-muted">{t.gallery.updatingText}</p>
               {fb && (
@@ -36,7 +36,7 @@ export function Gallery({ t, lang }: { t: Dictionary; lang: Lang }) {
               {t.gallery.categories.map((c, i) => (
                 <li
                   key={c}
-                  className="relative flex aspect-[4/3] items-end overflow-hidden rounded-xl border border-dashed border-[#cdbf9f] bg-paper p-3"
+                  className="relative flex aspect-[4/3] items-end overflow-hidden rounded-xl border border-dashed border-[#cdbf9f] bg-paper p-3 transition-colors duration-300 hover:border-gold hover:bg-ivory"
                 >
                   <span
                     aria-hidden="true"

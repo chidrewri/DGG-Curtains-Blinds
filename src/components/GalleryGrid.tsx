@@ -47,19 +47,19 @@ export function GalleryGrid({ projects, t, lang }: { projects: Project[]; t: Dic
       {shown.length === 0 ? (
         <p className="mt-8 text-muted">{t.gallery.emptyFilter}</p>
       ) : (
-        <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul data-reveal className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((p) => {
             const title = lang === "tl" && p.titleTl ? p.titleTl : p.title;
             return (
-              <li key={p.id} className="overflow-hidden rounded-2xl border border-line bg-ivory">
+              <li key={p.id} className="card-lift group overflow-hidden rounded-2xl border border-line bg-ivory">
                 {p.beforeImage ? (
                   <div className="grid grid-cols-2 gap-px bg-line">
                     {[
                       { src: p.beforeImage, alt: p.beforeAlt ?? `${title} (${t.gallery.before})`, label: t.gallery.before },
                       { src: p.image, alt: p.alt, label: t.gallery.after },
                     ].map((img) => (
-                      <div key={img.label} className="relative aspect-[3/4] bg-paper">
-                        <Image src={img.src} alt={img.alt} fill sizes="(min-width:1024px) 16vw, (min-width:640px) 25vw, 50vw" className="object-cover" />
+                      <div key={img.label} className="relative aspect-[3/4] overflow-hidden bg-paper">
+                        <Image src={img.src} alt={img.alt} fill sizes="(min-width:1024px) 16vw, (min-width:640px) 25vw, 50vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
                         <span className="absolute left-2 top-2 rounded-full bg-navy/85 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-ivory">
                           {img.label}
                         </span>
@@ -67,8 +67,8 @@ export function GalleryGrid({ projects, t, lang }: { projects: Project[]; t: Dic
                     ))}
                   </div>
                 ) : (
-                  <div className="relative aspect-[4/3] bg-paper">
-                    <Image src={p.image} alt={p.alt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
+                  <div className="relative aspect-[4/3] overflow-hidden bg-paper">
+                    <Image src={p.image} alt={p.alt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
                   </div>
                 )}
                 <div className="p-5">
