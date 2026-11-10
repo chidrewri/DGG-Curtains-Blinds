@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/*
+ * DGG design tokens. Colors come from the official brand kit:
+ * Deep Navy #0B2744 (main), Champagne Gold #D5AA65 (emphasis), Warm Ivory #F7F3EB (backgrounds).
+ * Fonts: DejaVu Serif (the "DGG" lettering in the logo) and Lato (the "CURTAINS & BLINDS" lettering).
+ */
+@theme {
+  --color-navy: #0b2744;
+  --color-navy-deep: #071c33;
+  --color-navy-soft: #163a5e;
+  --color-navy-line: #23466b;
+  --color-gold: #d5aa65;
+  --color-gold-light: #e9d3a8;
+  --color-gold-ink: #85601f; /* gold dark enough for small text on ivory (WCAG AA) */
+  --color-ivory: #f7f3eb;
+  --color-paper: #fffdf8;
+  --color-line: #e4dccb;
+  --color-ink: #0b2744;
+  --color-muted: #4a5b6e;
+  --color-mist: #b9c4d0; /* muted text on navy */
+
+  --font-serif: var(--font-dejavu-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-lato), "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --animate-rise: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ivory text-ink font-sans antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-serif font-bold;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--color-gold-light);
+    color: var(--color-navy);
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
+  }
+  @media (min-width: 640px) {
+    .container-x {
+      padding-left: max(2rem, env(safe-area-inset-left));
+      padding-right: max(2rem, env(safe-area-inset-right));
+    }
+  }
+  .eyebrow {
+    @apply font-sans text-xs font-bold uppercase tracking-[0.2em] text-gold-ink;
+  }
+  .on-navy .eyebrow {
+    @apply text-gold;
+  }
+  .section-title {
+    @apply text-3xl sm:text-4xl lg:text-[2.75rem];
+  }
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2.5 rounded-full px-6 py-3 text-[0.95rem] font-bold tracking-wide transition-colors duration-200 select-none;
+  }
+  .btn svg {
+    @apply size-5 shrink-0;
+  }
+  .btn-gold {
+    @apply bg-gold text-navy-deep hover:bg-gold-light;
+  }
+  .btn-navy {
+    @apply bg-navy text-ivory hover:bg-navy-soft;
+  }
+  .btn-outline-light {
+    @apply border border-ivory/40 text-ivory hover:border-gold hover:text-gold;
+  }
+  .btn-outline-dark {
+    @apply border border-navy/25 text-navy hover:border-navy hover:bg-navy hover:text-ivory;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

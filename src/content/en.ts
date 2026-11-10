@@ -1,0 +1,158 @@
+/**
+ * English website copy. Tagalog copy lives in tl.ts and must keep the same shape.
+ * Business facts (phones, links, address) are NOT here. They live in src/config/site.ts.
+ */
+
+export const en = {
+  langLabel: "English",
+  meta: {
+    title: "DGG Curtains & Blinds | Curtains and Blinds in Mangaldan, Pangasinan",
+    description:
+      "Custom curtains, zebra blinds, roller blinds and upholstery for homes, offices and commercial spaces across Pangasinan. Free measuring. Visit us at Mangaldan Public Market. Since 2010.",
+  },
+  skip: "Skip to main content",
+  nav: {
+    home: "Home",
+    about: "About Us",
+    services: "Services",
+    projects: "Our Projects",
+    why: "Why Choose Us",
+    contact: "Contact Us",
+    menu: "Menu",
+    close: "Close menu",
+    cta: "Get Free Measuring",
+    switchTo: "Tagalog",
+    switchLabel: "Basahin sa Tagalog",
+  },
+  hero: {
+    eyebrow: "Mangaldan, Pangasinan · Est. April 2010",
+    title: "Transforming Spaces Since 2010.",
+    lede: "Custom Curtains, Blinds & Upholstery for Homes, Offices & Commercial Spaces Across Pangasinan.",
+    primary: "Get Free Measuring",
+    messenger: "Message Us on Facebook",
+    explore: "Explore Our Services",
+    badge: "Free measuring · Libreng sukat",
+    facts: [
+      { value: "2010", label: "Serving since" },
+      { value: "In-house", label: "Sewing & fabrication" },
+      { value: "Free", label: "On-site measuring" },
+    ],
+    visualCaption: "Our logo: curtains on the left, blinds on the right.",
+  },
+  about: {
+    eyebrow: "About us",
+    title: "A family business serving Pangasinan since 2010.",
+    body: [
+      "DGG Curtains & Blinds is a family-owned business that opened in April 2010 at the Mangaldan Public Market. For more than 16 years, we have made and installed curtains, blinds and upholstery for families, offices and businesses across Pangasinan.",
+      "We do the work ourselves: we measure on site, sew and fabricate in-house, and install with our own team. When a project needs specialised work, we coordinate it for you so you only deal with one shop.",
+      "Whether it is one bedroom window or a whole building, we help you find a practical solution that fits your space and your budget.",
+    ],
+    points: [
+      { title: "Experience", text: "More than 16 years making and installing curtains and blinds." },
+      { title: "Craftsmanship", text: "Custom sewing and fabrication, made to your exact measurements." },
+      { title: "Friendly service", text: "Clear advice and quotations, whether you're a homeowner or a business." },
+      { title: "Options for every budget", text: "Choices for simple homes, premium residences and large commercial jobs." },
+    ],
+  },
+  services: {
+    eyebrow: "Our services",
+    title: "Curtains, blinds and upholstery, made to fit.",
+    lede: "Every window is different. We measure, sew and install to your exact size, with options for different styles and budgets.",
+    inquire: "Inquire",
+    items: [
+      { key: "curtains", title: "Custom Curtains", text: "Sewn to your window's measurements, with fabrics and styles that suit the room and your budget." },
+      { key: "zebra", title: "Zebra Blinds", text: "Alternating sheer and solid bands, so you can adjust light and privacy with one smooth pull." },
+      { key: "roller", title: "Roller Blinds", text: "Clean, simple shades that roll up out of the way. A neat fit for bedrooms, offices and clinics." },
+      { key: "other", title: "Other Window Blinds", text: "Need a different type of blind? Ask us what's available and what will work for your windows." },
+      { key: "upholstery", title: "Upholstery", text: "New fabric and covers for sofas, chairs and other furniture, done by our own team." },
+      { key: "install", title: "Measuring & Installation", text: "Free on-site measuring, then professional installation of what we make. Installation cost depends on the job." },
+    ],
+  },
+  solutions: {
+    eyebrow: "Residential & commercial",
+    title: "For homes, offices and commercial spaces.",
+    residential: {
+      label: "Residential Solutions",
+      title: "For your home",
+      text: "For family homes, modern residences, renovations and large custom installations. We help you choose what suits your style and your budget, then measure, sew and install it.",
+      tags: ["Family homes", "Modern residences", "Renovations", "Large custom installations"],
+      cta: "Request a home quotation",
+    },
+    commercial: {
+      label: "Commercial Solutions",
+      title: "For your business",
+      text: "For offices, businesses, commercial buildings and other facilities. One team measures every window, makes everything in-house and installs it, so your project stays consistent.",
+      tags: ["Offices", "Businesses", "Commercial buildings", "Facilities"],
+      cta: "Request a business quotation",
+    },
+  },
+  gallery: {
+    eyebrow: "Our projects",
+    title: "Recent work",
+    lede: "Real installations by the DGG team.",
+    filters: {
+      all: "All",
+      residential: "Residential",
+      commercial: "Commercial",
+      curtains: "Curtains",
+      blinds: "Blinds",
+      upholstery: "Upholstery",
+      "before-after": "Before & after",
+    },
+    before: "Before",
+    after: "After",
+    emptyFilter: "No photos in this category yet.",
+    updatingTitle: "Our project gallery is being updated.",
+    updatingText:
+      "We're collecting photos of our latest curtain, blinds and upholstery installations. In the meantime, you can see our work and message us on our Facebook page.",
+    updatingCta: "See our work on Facebook",
+    categories: ["Residential installations", "Commercial installations", "Curtains", "Blinds", "Upholstery", "Before & after"],
+  },
+  why: {
+    eyebrow: "Why choose DGG",
+    title: "A local team you can visit, call and trust.",
+    items: [
+      { title: "Established in 2010", text: "Serving customers since April 2010 from our stall at the Mangaldan Public Market." },
+      { title: "Family-run business", text: "You deal directly with the family and team that does the work." },
+      { title: "Custom workmanship", text: "Sewn and fabricated in-house to your exact window sizes." },
+      { title: "Residential & commercial", text: "From a single window at home to offices and commercial buildings." },
+      { title: "Free measuring", text: "We measure on site at no charge, so your quotation is based on real sizes." },
+      { title: "Serving Pangasinan", text: "Based in Mangaldan and serving customers across the province." },
+    ],
+  },
+  contact: {
+    offer: "Free Measuring • Libreng Sukat",
+    title: "Request a quotation",
+    lede: "Message us, call or text, or visit our stall. Tell us about your space and we'll schedule a free measuring visit.",
+    note: "Measuring is free across Pangasinan. A travel fee may apply for far areas. Installation cost and lead time depend on the job.",
+    requestQuote: "Request a Quotation",
+    requestQuoteHint: "Opens your email app with a short form to fill in.",
+    messenger: "Message Us on Facebook",
+    call: "Call",
+    callOrText: "Call or text",
+    email: "Email",
+    visit: "Visit our stall",
+    social: "Follow us",
+    facebook: "Facebook",
+    tiktok: "TikTok",
+    tiktokPending: "Search this name on TikTok",
+    directions: "Get directions",
+    mapTitle: "Map showing Mangaldan Public Market, Mangaldan, Pangasinan",
+    mapLoading: "Loading map…",
+    mapFallback: "Map not loading?",
+  },
+  footer: {
+    services: "Services",
+    contact: "Contact",
+    follow: "Social media",
+    rights: "All rights reserved.",
+    serviceArea: "Serving homes and businesses across Pangasinan.",
+  },
+  mobileBar: {
+    call: "Call",
+    message: "Message",
+    measure: "Free measuring",
+  },
+};
+
+export type Dictionary = typeof en;
